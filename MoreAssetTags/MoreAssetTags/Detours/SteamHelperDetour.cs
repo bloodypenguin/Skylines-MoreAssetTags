@@ -283,7 +283,20 @@ namespace MoreAssetTags.Detours
                 }
                 //end mod
             } else if (info is CitizenInfo)
+            {
                 stringList.Add("Citizen");
+            }
+            else if (info is NetInfo)
+            {
+                stringList.Add("Road");
+                PrefabAI ai = info.GetAI();
+                string tag1 = ServiceToTag(info.GetService(), ai);
+                if (tag1 != null)
+                    stringList.Add(tag1);
+                string tag2 = SubServiceToTag(info.GetSubService());
+                if (tag2 != null)
+                    stringList.Add(tag2);
+            }
             return stringList.ToArray();
         }
     }
