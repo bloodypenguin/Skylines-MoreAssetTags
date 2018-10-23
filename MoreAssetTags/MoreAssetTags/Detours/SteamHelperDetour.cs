@@ -196,6 +196,10 @@ namespace MoreAssetTags.Detours
                         stringList.Add(cargoTruckAi.m_isHeavyVehicle
                             ? "Vehicle Heavy Cargo Truck"
                             : "Vehicle Light Cargo Truck");
+                        if (info.GetSubService() == ItemClass.SubService.PublicTransportPost)
+                        {
+                            stringList.Add("Vehicle Post Truck");    
+                        }
                     }
                     else if (ai is AmbulanceAI)
                     {
