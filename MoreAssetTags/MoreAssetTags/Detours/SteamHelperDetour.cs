@@ -51,6 +51,8 @@ namespace MoreAssetTags.Detours
                     return "Fire Department";
                 case ItemClass.Service.PublicTransport:
                     return "Transport";
+                case ItemClass.Service.PlayerIndustry:
+                    return ai is UniqueFactoryAI ? "Unique Factory" : "Industry Area";
                 default:
                     return (string)null;
             }
@@ -128,7 +130,11 @@ namespace MoreAssetTags.Detours
                     {
                         stringList.Add("Vehicle Plane");
                         stringList.Add("Vehicle Passenger Plane");
-                    } 
+                    } else if (ai is CargoPlaneAI)
+                    {
+                        stringList.Add("Vehicle Plane");
+                        stringList.Add("Vehicle Cargo Plane");
+                    }
                 }
                 else if (ai is BlimpAI)
                 {
@@ -178,6 +184,10 @@ namespace MoreAssetTags.Detours
                     if (ai is PassengerCarAI)
                     {
                         stringList.Add("Vehicle Passenger Car");
+                    } 
+                    else if (ai is PostVanAI)
+                    {
+                        stringList.Add("Vehicle Post Van");
                     }
                     else if (ai is CargoTruckAI)
                     {
