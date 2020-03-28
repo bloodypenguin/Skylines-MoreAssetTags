@@ -6,7 +6,7 @@ using MoreAssetTags.Redirection;
 namespace MoreAssetTags.Detours
 {
     [TargetType(typeof(SteamHelper))]
-    public class SteamHelperDetour : WorkshopModUploadPanel
+    public class SteamHelperDetour
     {
 
         [RedirectMethod]
@@ -36,7 +36,7 @@ namespace MoreAssetTags.Detours
                     return (string)null;
                 //begin mod
                 case ItemClass.Service.Beautification:
-                    if (ai is DecorationBuildingAI || ai is DummyBuildingAI)
+                    if (ai is DecorationBuildingAI || ai is DummyBuildingAI || ai is DecorationWallAI)
                         return "Decoration";
                     return null;
                 //end mod
@@ -395,6 +395,18 @@ namespace MoreAssetTags.Detours
                 string tag2 = SubServiceToTag(info.GetSubService());
                 if (tag2 != null)
                     stringList.Add(tag2);
+                switch (((NetInfo)info).m_netAI)
+                {
+                    case QuayAI _:
+                        stringList.Add("Quay");
+                        break;
+                    case DecorationWallAI _:
+                        stringList.Add("Decoration Wall");
+                        break;
+                    case FloodWallAI _:
+                        stringList.Add("Flood Wall");
+                        break;
+                }
             }
             return stringList.ToArray();
         }
