@@ -53,6 +53,12 @@ namespace MoreAssetTags.Detours
                     return "Transport";
                 case ItemClass.Service.PlayerIndustry:
                     return ai is UniqueFactoryAI ? "Unique Factory" : "Industry Area";
+                case ItemClass.Service.PlayerEducation:
+                    return "Campus Area";
+                case ItemClass.Service.VarsitySports:
+                    return "Varsity Sports";
+                case ItemClass.Service.Fishing:
+                    return "Fishing Industry";
                 default:
                     return (string)null;
             }
@@ -162,6 +168,27 @@ namespace MoreAssetTags.Detours
                         stringList.Add("Vehicle Rescue Helicopter");
                     }
                 }
+                else if (ai is BalloonAI)
+                {
+                    stringList.Add("Vehicle Aircraft");
+                    stringList.Add("Vehicle Balloon");
+                }
+                else if (ai is PassengerHelicopterAI)
+                {
+                    stringList.Add("Vehicle Aircraft");
+                    stringList.Add("Vehicle Helicopter");
+                    stringList.Add("Vehicle Passenger Helicopter");
+                }
+                else if (ai is PrivatePlaneAI)
+                {
+                    stringList.Add("Vehicle Aircraft");
+                    stringList.Add("Vehicle Plane");
+                    stringList.Add("Vehicle Private Plane");
+                }
+                else if (ai is TrolleybusAI)
+                {
+                    stringList.Add("Vehicle Trolleybus");
+                }
                 else if (ai is TramAI)
                 {
                     stringList.Add("Vehicle Tram");
@@ -241,6 +268,10 @@ namespace MoreAssetTags.Detours
                     {
                         stringList.Add("Vehicle Taxi");
                     }
+                    else if (ai is ParkMaintenanceVehicleAI)
+                    {
+                        stringList.Add("Vehicle Park Maintenance");
+                    }
                 }
                 else if (ai is MetroTrainAI)
                 {
@@ -279,6 +310,11 @@ namespace MoreAssetTags.Detours
                     {
                         stringList.Add("Vehicle Cargo Ship");
                     }
+                }
+                else if (ai is FishingBoatAI)
+                {
+                    stringList.Add("Vehicle Ship");
+                    stringList.Add("Vehicle Fishing Ship");
                 }
                 else if (ai is FerryAI)
                 {
