@@ -196,6 +196,29 @@ namespace MoreAssetTags.Detours
                 else if (ai is BusAI)
                 {
                     stringList.Add("Vehicle Bus");
+                    if (info.GetService() == ItemClass.Service.Disaster)
+                    {
+                        stringList.Add("Vehicle Evacuation Bus");
+                    }
+                    if (info.GetSubService() == ItemClass.SubService.PublicTransportTours)
+                    {
+                        stringList.Add("Vehicle Sightseeing Bus");
+                    }
+                    else
+                    {
+                        switch (info.GetClassLevel())
+                        {
+                            case ItemClass.Level.Level1:
+                                stringList.Add("Vehicle City Bus");
+                                break;
+                            case ItemClass.Level.Level2:
+                                stringList.Add("Vehicle Biofuel Bus");
+                                break;
+                            case ItemClass.Level.Level3:
+                                stringList.Add("Vehicle Intercity Bus");
+                                break;
+                        }
+                    }
                 }
                 else if (ai is BicycleAI)
                 {
@@ -204,6 +227,10 @@ namespace MoreAssetTags.Detours
                 else if (ai is CableCarAI)
                 {
                     stringList.Add("Vehicle Cable Car");
+                }
+                else if (ai is RocketAI)
+                {
+                    stringList.Add("Vehicle Rocket");
                 }
                 else if (ai is CarAI)
                 {
@@ -234,7 +261,14 @@ namespace MoreAssetTags.Detours
                     }
                     else if (ai is PoliceCarAI)
                     {
-                        stringList.Add("Vehicle Police Car");
+                        if (info.GetClassLevel() == ItemClass.Level.Level4)
+                        {
+                            stringList.Add("Vehicle Police Van");  
+                        }
+                        else
+                        {
+                            stringList.Add("Vehicle Police Car");
+                        }
                     }
                     else if (ai is FireTruckAI)
                     {
@@ -251,6 +285,21 @@ namespace MoreAssetTags.Detours
                     else if (ai is GarbageTruckAI)
                     {
                         stringList.Add("Vehicle Garbage Truck");
+                        switch (info.GetClassLevel())
+                        {
+                            case ItemClass.Level.Level1:
+                                stringList.Add("Vehicle Regular Garbage Truck");
+                                break;
+                            case ItemClass.Level.Level2:
+                                stringList.Add("Vehicle Biofuel Garbage Truck");
+                                break;
+                            case ItemClass.Level.Level3:
+                                stringList.Add("Vehicle Garbage Collection Truck");
+                                break;
+                            case ItemClass.Level.Level4:
+                                stringList.Add("Vehicle Garbage Transfer Truck");
+                                break;
+                        }
                     }
                     else if (ai is HearseAI)
                     {
