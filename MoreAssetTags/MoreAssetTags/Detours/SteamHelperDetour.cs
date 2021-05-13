@@ -357,7 +357,14 @@ namespace MoreAssetTags.Detours
                     }
                     else if (ai is CargoShipAI)
                     {
-                        stringList.Add("Vehicle Cargo Ship");
+                        if (info.GetClassLevel() == ItemClass.Level.Level5)
+                        {
+                            stringList.Add("Vehicle Barge");
+                        }
+                        else
+                        {
+                            stringList.Add("Vehicle Cargo Ship");   
+                        }
                     }
                 }
                 else if (ai is FishingBoatAI)
