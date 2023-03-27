@@ -59,6 +59,8 @@ namespace MoreAssetTags.Detours
                     return "Varsity Sports";
                 case ItemClass.Service.Fishing:
                     return "Fishing Industry";
+                case ItemClass.Service.ServicePoint:
+                    return "Service Point";
                 default:
                     return (string)null;
             }
